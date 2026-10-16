@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- Table `store`.`categories`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`categories` (
-  `id_category` INT NOT NULL,
+  `id_category` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `slug` VARCHAR(45) NOT NULL COMMENT 'nombre de categoría, adaptado para url única.',
   `id_parent_category` INT NOT NULL,
@@ -54,7 +54,7 @@ ENGINE = InnoDB;
 -- Table `store`.`products`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`products` (
-  `id_product` INT NOT NULL,
+  `id_product` INT NOT NULL AUTO_INCREMENT,
   `id_category` INT NOT NULL,
   `sku` VARCHAR(45) NOT NULL COMMENT 'Identificador interno único',
   `name` VARCHAR(45) NOT NULL,
@@ -79,7 +79,7 @@ ENGINE = InnoDB;
 -- Table `store`.`carts`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`carts` (
-  `id_cart` INT NOT NULL,
+  `id_cart` INT NOT NULL AUTO_INCREMENT,
   `id_user` INT NOT NULL COMMENT 'Cada usuario puede tener un solo carro de compras mientras compra',
   `updated_at` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id_cart`),
@@ -98,7 +98,7 @@ COMMENT = 'Cada carro existe mientas se hace la compra, cada cliente unicamente 
 -- Table `store`.`cart_items`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`cart_items` (
-  `id_cart_item` INT NOT NULL,
+  `id_cart_item` INT NOT NULL AUTO_INCREMENT,
   `id_cart` INT NOT NULL,
   `id_product` INT NOT NULL COMMENT 'En cada carrito los productos no se repiten, pero se puede modificar la cantidad.',
   `quantity` INT NOT NULL,
@@ -124,7 +124,7 @@ COMMENT = 'Tabla dinámica, existe mientras see está haciendo la compra, cada c
 -- Table `store`.`orders`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`orders` (
-  `id_order` INT NOT NULL,
+  `id_order` INT NOT NULL AUTO_INCREMENT,
   `id_user` INT NOT NULL,
   `status` ENUM('pending', 'paid', 'shipped', 'cancelled') NOT NULL,
   `subtotal` DOUBLE NOT NULL,
@@ -146,7 +146,7 @@ ENGINE = InnoDB;
 -- Table `store`.`order_items`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`order_items` (
-  `id_order_item` INT NOT NULL,
+  `id_order_item` INT NOT NULL AUTO_INCREMENT,
   `id_order` INT NOT NULL,
   `id_product` INT NOT NULL,
   `quantity` INT NOT NULL,
@@ -171,7 +171,7 @@ ENGINE = InnoDB;
 -- Table `store`.`invoices`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `store`.`invoices` (
-  `id_invoice` INT NOT NULL,
+  `id_invoice` INT NOT NULL AUTO_INCREMENT,
   `invoice_number` VARCHAR(45) NOT NULL,
   `id_order` INT NOT NULL,
   `tax_id` VARCHAR(45) NOT NULL,

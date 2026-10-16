@@ -1,2 +1,3 @@
-use store;
+show tables;
 
+select * from users;
